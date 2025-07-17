@@ -20,10 +20,7 @@ use esp_hal_smartled::{smart_led_buffer, SmartLedsAdapter};
 use log::info;
 use smart_leds::{brightness, SmartLedsWrite as _, RGB8};
 
-#[panic_handler]
-fn panic(_: &core::panic::PanicInfo) -> ! {
-    loop {}
-}
+use esp_backtrace as _;
 
 extern crate alloc;
 
