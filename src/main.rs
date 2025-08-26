@@ -9,6 +9,7 @@
 mod accel;
 mod pov;
 
+const MAX_WIDTH: usize = 70;
 const NUM_LEDS: usize = 16;
 
 const SAMPLING_PERIOD_S: f32 = 1.0 / 200.0;
@@ -155,7 +156,7 @@ fn accel_int() {
 
 #[embassy_executor::task]
 async fn display(led: SmartLedsAdapter<esp_hal::rmt::Channel<esp_hal::Blocking, 0>, 385>) {
-    let mut pov = PovDisplay::<_, 70, NUM_LEDS>::new(led);
+    let mut pov = PovDisplay::<_, MAX_WIDTH, NUM_LEDS>::new(led);
 
     let mut stationary_started_time = Instant::now();
 
